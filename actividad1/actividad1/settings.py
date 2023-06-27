@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'Actividad1',
-        'USER': 'usuario',
+        'USER': 'Usuario',
         'PASSWORD': 'catalina',
         'HOST': 'localhost',
         'PORT': '5432'
@@ -130,3 +130,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'Home'
+LOGOUT_REDIRECT_URL = 'Home'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
