@@ -35,5 +35,5 @@ modeSwitch.addEventListener("click", () => {
     }
 });
 
-// Aplicar el tema al cargar la página
+
 applyTheme();
