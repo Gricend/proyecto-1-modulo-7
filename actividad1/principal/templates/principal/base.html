@@ -15,12 +15,16 @@
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="#" alt="logo">
+                    <img src="{% static 'img/logo.png' %}" alt="logo">
                 </span>
             </div>
             <div class="text header-text">
-                <span class="name">Ejemplo</span>
-                <span class="profession">Ejemplo</span>
+                {% if user.is_authenticated %}
+                <span class="name">Bienvenido, </span>
+                <span class="profession">  
+                    <h3>Bienvenido, {{ user.first_name }} {{ user.last_name }}</h3>
+                </span>
+                {% endif %}
             </div>
 
             <i class='bx bx-chevron-right toggle'></i>
@@ -54,12 +58,23 @@
                 </ul>
             </div>
             <div class="bottom-content">
+
+                {% if user.is_authenticated %}
                 <li class="">
-                    <a href="#">
+                    <a href="{% url 'logout' %}">
                         <i class="bx bx-log-out icon"></i>
                         <span class="text nav-text">Cerrar sesión</span>
                     </a>
                 </li>
+                {% else %}
+                <li class="">
+                    <a href="{% url 'Login' %}">
+                        <i class="bx bx-log-in icon"></i>
+                        <span class="text nav-text">Iniciar Sesión</span>
+                    </a>
+                </li>
+                {% endif %}
+
                 <li class="mode">
                     <div class="moon-sun">
                         <i class="bx bx-moon icon moon"></i>
@@ -80,6 +95,8 @@
     <section>
         {% block content %}{% endblock %}
     </section>
+
+
     <script src="{% static 'javascript/script.js' %}" ></script>
 </body>
 </html>

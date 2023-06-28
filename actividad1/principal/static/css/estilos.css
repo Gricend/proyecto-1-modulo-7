@@ -54,10 +54,12 @@ body.dark{
     opacity: 0;
 }
 
+
 .sidebar .image{
     min-width: 60px;
     display: flex;
     align-items: center;
+
 }
 
 .sidebar{
@@ -145,6 +147,10 @@ body.dark .sidebar header .toggle{
     color: var(--text-color);
 }
 
+body.dark form .text {
+    color: var(--text-color);
+}
+
 .sidebar .search-box{
     background: var(--primary-color-light);
     border-radius: 6px;
@@ -185,7 +191,7 @@ body.dark .sidebar li a:hover .text{
 }
 
 .sidebar .menu-bar{
-    height: calc(100% - 50px);
+    height: calc(100% - 40px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -258,3 +264,7 @@ body.dark .menu-bar .mode i.moon{
 body.dark .switch::before{
     left: 24px;
 }
+
+
+/* login */
+
