@@ -6,12 +6,12 @@ const body = document.querySelector("body"),
     modeText = body.querySelector(".mode-text");
 
 
-function aplicarTema() {
-    const ismodoOscuro = localStorage.getItem('modoOscuro') === 'true';
+function applyTheme() {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-    body.classList.toggle("oscuro", ismodoOscuro);
+    body.classList.toggle("dark", isDarkMode);
 
-    if (ismodoOscuro) {
+    if (isDarkMode) {
         modeText.innerText = "Modo Claro";
     } else {
         modeText.innerText = "Modo Oscuro";
@@ -23,16 +23,17 @@ toggle.addEventListener("click", () => {
 });
 
 modeSwitch.addEventListener("click", () => {
-    body.classList.toggle("oscuro");
+    body.classList.toggle("dark");
 
-    const ismodoOscuro = body.classList.contains("oscuro");
-    localStorage.setItem('modoOscuro', ismodoOscuro.toString());
+    const isDarkMode = body.classList.contains("dark");
+    localStorage.setItem('darkMode', isDarkMode.toString());
 
-    if (ismodoOscuro) {
+    if (isDarkMode) {
         modeText.innerText = "Modo Claro";
     } else {
         modeText.innerText = "Modo Oscuro";
     }
 });
 
-aplicarTema();
+// Aplicar el tema al cargar la página
+applyTheme();
