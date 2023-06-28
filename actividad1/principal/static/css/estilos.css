@@ -145,6 +145,11 @@ header .image-text .header-text{
 body.dark .sidebar header .toggle{
     transform: rotate(180deg);
     color: var(--text-color);
+    background: #695CFE;
+}
+
+body.dark .sidebar.close header .toggle{
+    transform: translateY(-50%);
 }
 
 body.dark form .text {
@@ -191,7 +196,7 @@ body.dark .sidebar li a:hover .text{
 }
 
 .sidebar .menu-bar{
-    height: calc(100% - 40px);
+    height: calc(100% - 75px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
