@@ -38,7 +38,7 @@
                 </li> 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{% url 'lista_tareas' %}">
                             <i class='bx bx-home icon'></i>
                             <span class="text nav-text">Inicio</span>
                         </a>
@@ -92,10 +92,10 @@
     </nav>
 
 
-    <section>
-        {% block content %}{% endblock %}
+    <section class="home">
+        <div class="text">{% block content %}{% endblock %} </div>
     </section>
-
+    
 
     <script src="{% static 'javascript/script.js' %}" ></script>
 </body>

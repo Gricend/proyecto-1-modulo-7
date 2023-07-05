@@ -1,52 +1,47 @@
-{% extends "principal/base.html"%}
+{% extends 'principal/base.html' %}
 {% load static %}
 
-
-
 {% block content %}
-
 <form method="post">
     {% csrf_token %}
-        <div class="hero is-secondary is-fullheight">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="columns is-centered">
-                        <div class="column is-4">
-                            <form action="" class="box">
-                                <span class="image">
-                                    <img src="{% static 'img/logo.png' %}" alt="logo">
-                                </span><br><br>
-                                <h5 class="title text is-5 is-centered">Login</h5>
-                                <div class="field">
-                                    <label class="label text" for="id_username">Usuario</label>
-                                    <div class="control">
-                                        <input type="text" class="input" id="id_username" name="username" placeholder="Usuario" required>
-                                        {% comment %} {{ form.username }} {% endcomment %}
-                                    </div>
+    <div class="hero is-secondary is-fullheight">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-4">
+                        <form action="" class="box">
+                            <span class="image">
+                                <img src="{% static 'img/logo.png' %}" alt="logo">
+                            </span><br><br>
+                            <h5 class="title text is-5 is-centered">Login</h5>
+                            <div class="field">
+                                <label class="label text" for="id_username">Usuario</label>
+                                <div class="control">
+                                    <input type="text" class="input" id="id_username" name="username" placeholder="Usuario" required>
+                                    {% comment %} {{ form.username }} {% endcomment %}
                                 </div>
-                                <div class="field">
-                                    <label class="label text" for="id_password">Contraseña</label>
-                                    <div class="control">
-                                        <input type="password" class="input" id="id_password" name="password" placeholder="Contraseña" required>
-                                        {% comment %} {{ form.password }} {% endcomment %}
-                                    </div>
+                            </div>
+                            <div class="field">
+                                <label class="label text" for="id_password">Contraseña</label>
+                                <div class="control">
+                                    <input type="password" class="input" id="id_password" name="password" placeholder="Contraseña" required>
+                                    {% comment %} {{ form.password }} {% endcomment %}
                                 </div>
-                                {% if form.errors %}
-                                <div class="notification is-danger mt-3">
-                                    <h4>Errores</h4>
-                                    {{ form.errors }}
-                                </div>
-                                {% endif %}
-                                <div class="field">
-                                    <button type="submit" class="button is-link mt-3">Ingresar</button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                            {% if form.errors %}
+                            <div class="notification is-danger mt-3">
+                                <h4>Errores</h4>
+                                {{ form.errors }}
+                            </div>
+                            {% endif %}
+                            <div class="field">
+                                <button type="submit" class="button is-link mt-3">Ingresar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </form>
-
-
 {% endblock %}

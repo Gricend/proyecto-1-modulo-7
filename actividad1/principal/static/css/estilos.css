@@ -71,6 +71,7 @@ body.dark{
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
+    z-index: 100;
 }
 
 .sidebar li{
@@ -143,13 +144,12 @@ header .image-text .header-text{
 }
 
 body.dark .sidebar header .toggle{
-    transform: rotate(180deg);
     color: var(--text-color);
     background: #695CFE;
 }
 
 body.dark .sidebar.close header .toggle{
-    transform: translateY(-50%);
+    
 }
 
 body.dark form .text {
@@ -271,5 +271,26 @@ body.dark .switch::before{
 }
 
 
-/* login */
+.home{
+    position: relative;
+    left: 250px;
+    height: 100vh;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+
+}
+
+.home .text{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+
+.sidebar.close ~ .home{
+    left: 88px;
+    width: calc(100% - 88px);
+
+}
 

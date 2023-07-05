@@ -1,0 +1,28 @@
+{% extends 'principal/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1>Tareas Pendientes</h1>
+    <a href="#">Agregar Tarea</a>
+    <table>
+        <thead>
+            <tr>
+            <th>Título</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in tareas %}
+            <tr>
+            <td>{{ tarea.titulo }}</td>
+            <td>{{ tarea.fecha_limite }}</td>
+            <td>
+                <a href="{% url 'detalle_tareas' tarea.id %}">Ver</a>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
