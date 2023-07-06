@@ -298,3 +298,75 @@ body.dark .switch::before{
 
 }
 
+body.dark .card{
+    -webkit-box-shadow: 8px 8px 5px -4px #B914FF, -8px -8px 5px -4px #0FBFFF;
+    box-shadow: 8px 8px 5px -4px #B914FF, -8px -8px 5px -4px #0FBFFF;
+    background: #18191A;
+    
+}
+
+body.dark .neon-btn {
+    color: var(--body-color);
+    position: relative;
+    display: inline-block;
+    padding: 7px 15px;
+    background: transparent;
+    font-size: 15px;
+    overflow: hidden;
+    transition: 0.2s;
+    border: 3px solid #2196f3;
+    border-radius: 30px;
+}
+section textarea {
+    width: 60%;
+    height: 40px;
+    border-radius: 15px;
+}
+
+section #id_titulo{
+    width: 40%;
+    height: 40px;
+    border-radius: 15px;
+}
+
+section select{
+
+    height: 40px;
+    border-radius: 15px;
+}
+
+section input{
+    height: 40px;
+    border-radius: 15px;
+}
+
+
+section .card{
+    background-color: var(--body-color);
+    -webkit-box-shadow: 8px 8px 5px -4px #0FBFFF, -8px -8px 5px -4px #B914FF;
+    box-shadow: 8px 8px 5px -4px #0FBFFF, -8px -8px 5px -4px #B914FF;
+}
+
+.neon-btn{
+    color: var(--primary-color);
+    font-size: 15px;
+    border-radius: 30px;
+    border: 3px solid #2196f3;
+    padding: 7px 15px;
+}
+
+body.dark .neon-btn:hover {
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 10%;
+    }
+    .sidebar.close {
+        width: ;
+    }   
+
+}

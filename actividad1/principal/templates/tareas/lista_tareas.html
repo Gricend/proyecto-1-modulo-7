@@ -2,49 +2,53 @@
 {% load static %}
 
 {% block content %}
-<div class="hero is-secondary is-fullheight">
-    <div class="hero-body">
-        <div class="container">
+<div class="hero ">
+    <div class="hero-body ">
+        <div class="container has-text-centered">
             <h1><img src="{% static 'img/up(3).png' %}" alt="..."></h1>
             <div class="columns">
-                <div class="column is-4">
-                        <form method="get" action="{% url 'lista_tareas' %}">
-                            <select name="etiqueta">
-                                <option value="">Todas las etiquetas</option>
-                                {% for etiqueta in etiquetas %}
-                                <option value="{{ etiqueta.id }}" {% if etiqueta.id|stringformat:"s" == etiqueta_seleccionada %}selected{% endif %}>{{ etiqueta.nombre }}</option>
-                                {% endfor %}
-                            </select>
-                            <select name="estado">
-                                <option value="">Estados</option>
-                                {% for estado in estados %}
-                                <option value="{{ estado }}" {% if estado == estado_seleccionado %}selected{% endif %}>{{ estado }}</option>
-                                {% endfor %}
-                            </select>
-                            <button type="submit" class="button is-link mt-3 btn-sm" >Filtrar</button>
-                        </form>
+                <div class="column is-4 text has-text-centered">
+                    <form method="get" action="{% url 'lista_tareas' %}">
+                        <select name="etiqueta">
+                            <option value="">Todas las etiquetas</option>
+                            {% for etiqueta in etiquetas %}
+                            <option value="{{ etiqueta.id }}" {% if etiqueta.id|stringformat:"s" == etiqueta_seleccionada %}selected{% endif %}>{{ etiqueta.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="estado">
+                            <option value="">Estados</option>
+                            {% for estado in estados %}
+                            <option value="{{ estado }}" {% if estado == estado_seleccionado %}selected{% endif %}>{{ estado }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="neon-btn" ><a></a>Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div>
+<button class="neon-btn"><a href="{% url 'crear_tarea' %}">Agregar Tarea</a></button>
 
-                        <a class="button is-link mt-3 btn-sm" href="{% url 'crear_tarea' %}">Agregar Tarea</a>
-                        <table class="table is-hoverable is-bordered">
-                            <thead>
-                                <tr>
-                                <th>Título</th>
-                                <th>Fecha Límite</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for tarea in tareas %}
-                                <tr>
-                                <td>{{ tarea.titulo }}</td>
-                                <td>{{ tarea.fecha_limite }}</td>
-                                <td>{{ tarea.estado }}</td>
-                                <td>
-                                    <a class="button is-link mt-3 btn-sm" href="{% url 'detalle_tareas' tarea.id %}">Ver</a>
-                                </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+<div class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-multiline">
+                {% for tarea in tareas %}
+                <div class="column is-one-third">
+                    <div class="card text">
+                        <ul>
+                            <li>Título: {{ tarea.titulo }}</li>
+                            <li>Fecha Límite: {{ tarea.fecha_limite }}</li>
+                            <li>Estado: {{ tarea.estado }}</li>
+                        </ul>
+                        <button class="neon-btn"><a href="{% url 'detalle_tareas' tarea.id %}">Ver Tarea</a></button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>            
+        </div>
+    </div>        
+</div>
+
 {% endblock %}

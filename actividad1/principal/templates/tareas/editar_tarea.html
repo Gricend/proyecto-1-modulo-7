@@ -3,12 +3,20 @@
 
 {% block content %}
 
-
-    <h1>Editar Tarea</h1>
-        <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar Cambios</button>
-    </form>
+<div class="hero ">
+    <div class="hero-body ">
+        <div class="container has-text-centered">
+            <h1><img src="{% static 'img/up(5).png' %}" alt="..."></h1>
+            <div class="columns" style="justify-content: center; margin-top: 50px;">
+                <div class=" is-4 ">
+                <div class="card text has-text-left">
+                    <header  class="card-header">
+                        <p class="card-header-title text">Editar Tarea</p>
+                    </header>
+                        <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="neon-btn"><a type="submit">Guardar Cambios</a></button>
+                    </form>
 
 {% endblock %}

@@ -4,15 +4,13 @@
 {% block content %}
 <form method="post">
     {% csrf_token %}
-    <div class="hero is-secondary is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-4">
-                        <form action="" class="box">
-                            <span class="image">
-                                <img src="{% static 'img/logo.png' %}" alt="logo">
-                            </span><br><br>
+    <div class="hero ">
+        <div class="hero-body ">
+            <div class="container has-text-centered">
+                <h1><img src="{% static 'img/logo.png' %}" alt="..."></h1>
+                <div class="columns" style="justify-content: center; margin-top: 50px;">
+                    <div class=" is-4 ">
+                    <div class="card text has-text-left">
                             <div class="field">
                                 <label class="label text" for="id_username">Usuario</label>
                                 <div class="control">
@@ -32,7 +30,7 @@
                             </div>
                             {% endif %}
                             <div class="field">
-                                <button type="submit" class="button is-link mt-3">Ingresar</button>
+                                <button class="neon-btn"><a type="submit">Ingresar</a></button>
                             </div>
                         </form>
                     </div>
