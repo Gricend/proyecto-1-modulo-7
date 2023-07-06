@@ -8,10 +8,10 @@
 <p>Fecha de Vencimiento: {{ tarea.fecha_limite }}</p>
 <p>Estado: {{ tarea.estado }}</p>
 <p>Etiqueta: {{ tarea.etiqueta }}</p>
-<a href="#">Editar</a>
+<a href="{% url 'editar_tarea' tarea.id %}">Editar</a>
 <a href="#">Eliminar</a>
 <a href="#">Completar</a>
-<a href="{% url 'lista_tareas' %}">Retornar</a>
+<a href="{% url 'lista_tareas' %}">Volver</a>
 
 
 

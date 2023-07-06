@@ -41,3 +41,13 @@ class FormularioTarea(forms.ModelForm):
         widgets = {
             'fecha_limite': forms.DateInput(attrs={'type': 'date'})
         }
+
+class FormularioEdicionTarea(forms.ModelForm):
+    etiqueta = forms.ModelChoiceField(queryset=Etiqueta.objects.all(), label='Etiqueta')
+
+    class Meta:
+        model = Tarea
+        fields = ['titulo', 'descripcion', 'fecha_limite', 'estado', 'etiqueta']
+        widgets = {
+            'fecha_limite': forms.DateInput(attrs={'type': 'date'})
+        }

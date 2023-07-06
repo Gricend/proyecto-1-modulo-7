@@ -14,18 +14,19 @@
         <select name="estado">
             <option value="">Estados</option>
             {% for estado in estados %}
-            <option value="{{ estado }}" {% if estado == estado_seleccionado %}selected{% endif %}" >{{ estado }}</option>
+            <option value="{{ estado }}" {% if estado == estado_seleccionado %}selected{% endif %}>{{ estado }}</option>
             {% endfor %}
         </select>
-        <button type="submit">Filtrar</button>
+        <button type="submit" class="button is-link mt-3 btn-sm" >Filtrar</button>
     </form>
 
-    <a href="{% url 'crear_tarea' %}">Agregar Tarea</a>
+    <a class="button is-link mt-3 btn-sm" href="{% url 'crear_tarea' %}">Agregar Tarea</a>
     <table>
         <thead>
             <tr>
             <th>Título</th>
-            <th>Fecha de Vencimiento</th>
+            <th>Fecha Límite</th>
+            <th>Estado</th>
             <th>Acciones</th>
             </tr>
         </thead>
@@ -34,8 +35,9 @@
             <tr>
             <td>{{ tarea.titulo }}</td>
             <td>{{ tarea.fecha_limite }}</td>
+            <td>{{ tarea.estado }}</td>
             <td>
-                <a href="{% url 'detalle_tareas' tarea.id %}">Ver</a>
+                <a class="button is-link mt-3 btn-sm" href="{% url 'detalle_tareas' tarea.id %}">Ver</a>
             </td>
             </tr>
             {% endfor %}

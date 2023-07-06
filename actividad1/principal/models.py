@@ -10,8 +10,8 @@ class Etiqueta(models.Model):
 
 class Tarea(models.Model):
     STATUS_CHOICES = (
-        ('pendiente', 'Pendiente'),
-        ('en_progreso', 'En progreso'),
+        ('pendiente','Pendiente'),
+        ('En progreso','En progreso'),
         ('completada', 'Completada'),
     )
 
@@ -25,3 +25,9 @@ class Tarea(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+    def get_estado_display(self):
+        for choice in self.STATUS_CHOICES:
+            if choice[0] == self.estado:
+                return choice[1]
+        return self.estado.lower()

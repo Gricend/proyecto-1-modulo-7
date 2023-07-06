@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
 from principal.models import Tarea, Etiqueta
-from principal.forms import LoginForm, FormularioTarea
+from principal.forms import LoginForm, FormularioTarea, FormularioEdicionTarea
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -36,11 +36,11 @@ def lista_tarea(request):
     etiqueta_seleccionada = request.GET.get('etiqueta')
     estado_seleccionado = request.GET.get('estado')
 
-    tareas = Tarea.objects.filter(user=user, estado='pendiente').order_by('fecha_limite')
+    tareas = Tarea.objects.filter(user=request.user).order_by('fecha_limite')
     if etiqueta_seleccionada:
         tareas = tareas.filter(etiqueta=etiqueta_seleccionada)
     if estado_seleccionado:
-        tareas = tareas.filter(estado=estado_seleccionado)    
+        tareas = tareas.filter(estados=estado_seleccionado)    
     return render(request, 'tareas/lista_tareas.html', {'tareas': tareas, 'etiquetas':etiquetas, 'estados':estados, 'etiqueta_seleccionada':etiqueta_seleccionada, 'estado_seleccionado':estado_seleccionado })
 
 
@@ -63,3 +63,16 @@ def crear_tarea(request):
         form = FormularioTarea()
 
     return render(request, 'tareas/crear_tarea.html', {'form': form}) 
+
+def editar_tarea(request, tarea_id):
+    tarea = get_object_or_404(Tarea, id=tarea_id)
+
+    if request.method == 'POST':
+        form = FormularioEdicionTarea(request.POST, instance=tarea)
+        if form.is_valid():
+            form.save()
+            return redirect('detalle_tareas', tarea.id)
+    else:
+        form = FormularioEdicionTarea(instance=tarea)
+
+    return render(request, 'tareas/editar_tarea.html', {'form': form})

@@ -8,7 +8,8 @@
 <form method="post" action="{% url 'crear_tarea' %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
+    <button class="button is-link mt-3" type="submit">Guardar</button>
+    <a class="button is-link mt-3 btn-sm" href="{% url 'lista_tareas' %}">Cancelar</a>
 </form>
 
 {% endblock %}
