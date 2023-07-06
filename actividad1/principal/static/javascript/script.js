@@ -41,3 +41,7 @@ modeSwitch.addEventListener("click", () => {
 
 
 applyTheme();
+
+const popover = new bootstrap.Popover('.popover-dismiss', {
+    trigger: 'focus'
+})

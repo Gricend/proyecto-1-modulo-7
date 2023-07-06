@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,10 +38,17 @@
                 </li> 
                 <ul class="menu-links">
                     <li class="nav-link">
+                        {% if user.is_authenticated %}
                         <a href="{% url 'lista_tareas' %}">
                             <i class='bx bx-home icon'></i>
                             <span class="text nav-text">Inicio</span>
                         </a>
+                        {% else %}
+                        <a href="{% url 'Login' %}">
+                            <i class='bx bx-home icon'></i>
+                            <span class="text nav-text">Inicio</span>
+                        </a>
+                        {% endif %}
                     </li>
                     <li class="nav-link">
                         <a href="#">
@@ -50,10 +57,17 @@
                         </a>
                     </li> 
                     <li class="nav-link">
+                        {% if user.is_authenticated %}
                         <a href="{% url 'crear_tarea' %}">
                             <i class="ri-task-line icon"></i>
                             <span class="text nav-text">Agregar Tarea</span>
                         </a>
+                        {% else %}
+                        <a href="{% url 'Login' %}">
+                            <i class="ri-task-line icon"></i>
+                            <span class="text nav-text">Agregar Tarea</span>
+                        </a>
+                        {% endif %}
                     </li> 
                 </ul>
             </div>

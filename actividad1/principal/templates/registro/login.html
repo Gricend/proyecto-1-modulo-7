@@ -13,19 +13,16 @@
                             <span class="image">
                                 <img src="{% static 'img/logo.png' %}" alt="logo">
                             </span><br><br>
-                            
                             <div class="field">
                                 <label class="label text" for="id_username">Usuario</label>
                                 <div class="control">
                                     <input type="text" class="input" id="id_username" name="username" placeholder="Usuario" required>
-                                    {% comment %} {{ form.username }} {% endcomment %}
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="label text" for="id_password">Contraseña</label>
                                 <div class="control">
                                     <input type="password" class="input" id="id_password" name="password" placeholder="Contraseña" required>
-                                    {% comment %} {{ form.password }} {% endcomment %}
                                 </div>
                             </div>
                             {% if form.errors %}

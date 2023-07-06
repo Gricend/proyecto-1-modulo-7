@@ -2,14 +2,25 @@
 {% load static %}
 
 {% block content %}
+<div style="float: right;">
+    {% include 'tareas/lista_tareas2.html' %}
+</div>
 
-<h1>Crear Tarea</h1>
-
-<form method="post" action="{% url 'crear_tarea' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="button is-link mt-3" type="submit">Guardar</button>
-    <a class="button is-link mt-3 btn-sm" href="{% url 'lista_tareas' %}">Cancelar</a>
-</form>
-
+<div class="hero is-secondary is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <h1><img src="{% static 'img/up (2).png' %}" alt="..."></h1>
+            <div class="columns">
+                <div class="column is-4">
+                    <form method="post" action="{% url 'crear_tarea' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="button is-link mt-3" type="submit">Guardar</button>
+                        <a class="button is-link mt-3 btn-sm" href="{% url 'lista_tareas' %}">Cancelar</a>
+                    </form>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>        
 {% endblock %}

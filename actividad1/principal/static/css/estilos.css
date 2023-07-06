@@ -153,9 +153,6 @@ body.dark .sidebar header .toggle{
     background: #695CFE;
 }
 
-body.dark .sidebar.close header .toggle{
-    
-}
 
 body.dark form .text {
     color: var(--text-color);
