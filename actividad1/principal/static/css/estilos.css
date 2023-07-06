@@ -59,7 +59,12 @@ body.dark{
     min-width: 60px;
     display: flex;
     align-items: center;
+    justify-content: center;
 
+}
+
+.sidebar .menu{
+    margin-top: 35px;
 }
 
 .sidebar{
@@ -167,6 +172,8 @@ body.dark form .text {
     outline: none;
     border: none;
     border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
     background: var(--primary-color-light);
     
 }

@@ -1,4 +1,5 @@
 from django import forms
+from .models import Etiqueta, Tarea
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='Usuario', required=True,
@@ -25,3 +26,18 @@ class LoginForm(forms.Form):
                                     'class': 'form-control'
                                 })
                                 )
+
+
+class FormularioTarea(forms.ModelForm):
+    etiqueta = forms.ModelChoiceField(queryset=Etiqueta.objects.all(), label='Etiqueta')
+
+    def __init__(self, *args, **kwargs):
+        super(FormularioTarea, self).__init__(*args, **kwargs)
+        self.fields['etiqueta'].choices = [(etiqueta.id, etiqueta.nombre) for etiqueta in Etiqueta.objects.all()]
+
+    class Meta:
+        model = Tarea
+        fields = ['titulo', 'descripcion', 'fecha_limite', 'estado', 'etiqueta']
+        widgets = {
+            'fecha_limite': forms.DateInput(attrs={'type': 'date'})
+        }

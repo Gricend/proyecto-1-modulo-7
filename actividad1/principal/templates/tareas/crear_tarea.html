@@ -1,0 +1,14 @@
+{% extends 'principal/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>Crear Tarea</h1>
+
+<form method="post" action="{% url 'crear_tarea' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+
+{% endblock %}

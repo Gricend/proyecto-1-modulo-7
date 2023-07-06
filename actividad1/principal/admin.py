@@ -1,8 +1,8 @@
 from django.contrib import admin
-from principal.models import Tag
+from principal.models import Etiqueta
 
 # Register your models here.
 
-@admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
-    list_display = ['nombre'] 
+@admin.register(Etiqueta)
+class EtiquetaAdmin(admin.ModelAdmin):
+    list_display = ['nombre']

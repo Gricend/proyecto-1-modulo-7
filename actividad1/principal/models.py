@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Tag(models.Model):
+class Etiqueta(models.Model):
     nombre = models.CharField(max_length=50)
 
-    def str(self):
+    def __str__(self):
         return self.nombre
+
 
 class Tarea(models.Model):
     STATUS_CHOICES = (
@@ -18,8 +19,9 @@ class Tarea(models.Model):
     descripcion = models.TextField()
     fecha_limite = models.DateField()
     estado = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pendiente')
-    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    etiqueta = models.ForeignKey(Etiqueta, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    observaciones = models.TextField(blank=True, null=True, max_length=200)
 
-    def str(self):
+    def __str__(self):
         return self.titulo
