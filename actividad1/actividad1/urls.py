@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from principal.views import Ingreso, detalle_tareas, lista_tarea, crear_tarea, editar_tarea
+from principal.views import Ingreso, detalle_tareas, lista_tarea, crear_tarea, editar_tarea, eliminar_tarea, completar_tarea
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -27,4 +27,6 @@ urlpatterns = [
     path('detalle_tareas/<int:tarea_id>/', detalle_tareas, name='detalle_tareas'),
     path('crear_tarea/', crear_tarea, name='crear_tarea'),
     path('editar_tarea/<int:tarea_id>/', editar_tarea, name='editar_tarea'),
+    path('eliminar<int:tarea_id>/', eliminar_tarea, name='eliminar_tarea'),
+    path('completar/<int:tarea_id>/', completar_tarea, name='completar_tarea'),
 ]

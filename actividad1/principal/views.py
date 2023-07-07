@@ -2,8 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
 from principal.models import Tarea, Etiqueta
-from principal.forms import LoginForm, FormularioTarea, FormularioEdicionTarea
-from django.contrib.auth.decorators import login_required
+from principal.forms import LoginForm, FormularioTarea, FormularioEdicionTarea, ObservacionesForm
 
 # Create your views here.
 
@@ -47,9 +46,21 @@ def lista_tarea(request):
 
 def detalle_tareas(request, tarea_id):
     tarea = get_object_or_404(Tarea, id=tarea_id)
-    return render(request, 'tareas/detalle_tareas.html', {'tarea': tarea})
+    
 
+    if request.method == 'POST':
+        form = ObservacionesForm(request.POST)
+        if form.is_valid():
+            observaciones = form.cleaned_data['observaciones']
+            tarea.observaciones = observaciones
+            tarea.save()
 
+    else:
+        observaciones_anteriores = tarea.observaciones if tarea.observaciones else ''
+
+        form = ObservacionesForm(initial={'observaciones': observaciones_anteriores})
+
+    return render(request, 'tareas/detalle_tareas.html', {'tarea': tarea, 'form': form})
 
 def crear_tarea(request):
     if request.method == 'POST':
@@ -76,3 +87,14 @@ def editar_tarea(request, tarea_id):
         form = FormularioEdicionTarea(instance=tarea)
 
     return render(request, 'tareas/editar_tarea.html', {'form': form})
+
+def eliminar_tarea(request, tarea_id):
+    tarea = get_object_or_404(Tarea, id=tarea_id)
+    tarea.delete()
+    return redirect('lista_tareas')
+
+def completar_tarea(request, tarea_id):
+    tarea = get_object_or_404(Tarea, id=tarea_id)
+    tarea.estado = 'completada'
+    tarea.save()
+    return redirect('lista_tareas')

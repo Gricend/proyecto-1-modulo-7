@@ -5,7 +5,7 @@
 <div class="hero ">
     <div class="hero-body ">
         <div class="container has-text-centered">
-            <h1><img src="{% static 'img/up(3).png' %}" alt="..."></h1>
+            <h1><img src="{% static 'img/up(6).png' %}" alt="..."></h1>
             <div class="columns">
                 <div class="column is-4 text has-text-centered">
                     <form method="get" action="{% url 'lista_tareas' %}">
@@ -21,7 +21,7 @@
                             <option value="{{ estado }}" {% if estado == estado_seleccionado %}selected{% endif %}>{{ estado }}</option>
                             {% endfor %}
                         </select>
-                        <button type="submit" class="neon-btn" ><a></a>Filtrar</button>
+                        <button type="submit" class="neon-btn" ><a>Filtrar</a></button>
                     </form>
                 </div>
             </div>
