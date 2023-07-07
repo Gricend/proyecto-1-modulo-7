@@ -15,7 +15,7 @@
                         <p>Fecha de Vencimiento: {{ tarea.fecha_limite }}</p>
                         <p>Estado: {{ tarea.estado }}</p>
                         <p>Etiqueta: {{ tarea.etiqueta }}</p>
-                        <form method="post" action="">
+                        <form method="post">
                             {% csrf_token %}
                             {{ form.as_p }} 
                             <button class="neon-btn" type="submit"><a>Guardar Observación</a></button>
