@@ -2,4 +2,4 @@
 
 superuser: jose pass: asd123
 
-Debería existir un usuario "pedro" con la pass "martini123"
+Debería existir un usuario "pedrito" con la pass "martini123"
