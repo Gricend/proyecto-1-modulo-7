@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
 from principal.models import Tarea, Etiqueta
 from principal.forms import LoginForm, FormularioTarea, FormularioEdicionTarea, ObservacionesForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -28,6 +29,7 @@ class Ingreso(TemplateView):
         else:
             return render(request, self.template_name, { "form": form })
         
+@login_required
 def lista_tarea(request):
     user = request.user
     etiquetas = Etiqueta.objects.all()
@@ -35,12 +37,15 @@ def lista_tarea(request):
     etiqueta_seleccionada = request.GET.get('etiqueta')
     estado_seleccionado = request.GET.get('estado')
 
-    tareas = Tarea.objects.filter(user=request.user).order_by('fecha_limite')
+    tareas = Tarea.objects.filter(user=user).order_by('fecha_limite')
+    tareas_completadas = tareas.filter(estado='Completada')
+
     if etiqueta_seleccionada:
         tareas = tareas.filter(etiqueta=etiqueta_seleccionada)
     if estado_seleccionado:
-        tareas = tareas.filter(estados=estado_seleccionado)    
-    return render(request, 'tareas/lista_tareas.html', {'tareas': tareas, 'etiquetas':etiquetas, 'estados':estados, 'etiqueta_seleccionada':etiqueta_seleccionada, 'estado_seleccionado':estado_seleccionado })
+        tareas = tareas.filter(estado=estado_seleccionado)
+
+    return render(request, 'tareas/lista_tareas.html', {'tareas': tareas, 'etiquetas': etiquetas, 'estados': estados, 'etiqueta_seleccionada': etiqueta_seleccionada, 'estado_seleccionado': estado_seleccionado, 'tareas_completadas': tareas_completadas})
 
 
 
@@ -67,13 +72,15 @@ def crear_tarea(request):
         form = FormularioTarea(request.POST)
         if form.is_valid():
             tarea = form.save(commit=False)
-            tarea.user = request.user
+            tarea.user = form.cleaned_data['asignado_a']
             tarea.save()
+            form.save_m2m()
             return redirect('lista_tareas')
     else:
         form = FormularioTarea()
 
-    return render(request, 'tareas/crear_tarea.html', {'form': form}) 
+    return render(request, 'tareas/crear_tarea.html', {'form': form})
+
 
 def editar_tarea(request, tarea_id):
     tarea = get_object_or_404(Tarea, id=tarea_id)

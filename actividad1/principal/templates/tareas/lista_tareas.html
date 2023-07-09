@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <div class="hero ">
     <div class="hero-body ">
         <div class="container has-text-centered">
@@ -24,31 +25,24 @@
                         <button type="submit" class="neon-btn" ><a>Filtrar</a></button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>                    
-</div>
-<button class="neon-btn"><a href="{% url 'crear_tarea' %}">Agregar Tarea</a></button>
-
-<div class="hero">
-    <div class="hero-body">
-        <div class="container">
+            </div> 
+            <button class="neon-btn"><a href="{% url 'crear_tarea' %}">Agregar Tarea</a></button><br><br>
             <div class="columns is-multiline">
                 {% for tarea in tareas %}
                 <div class="column is-one-third">
-                    <div class="card text">
+                    <div class="card text2">
                         <ul>
                             <li>Título: {{ tarea.titulo }}</li>
                             <li>Fecha Límite: {{ tarea.fecha_limite }}</li>
                             <li>Estado: {{ tarea.estado }}</li>
+                            <li>Prioridad: {{ tarea.prioridad }}</li>
                         </ul>
                         <button class="neon-btn"><a href="{% url 'detalle_tareas' tarea.id %}">Ver Tarea</a></button>
                     </div>
                 </div>
                 {% endfor %}
-            </div>            
+            </div>  
         </div>
-    </div>        
+    </div>                    
 </div>
-
 {% endblock %}

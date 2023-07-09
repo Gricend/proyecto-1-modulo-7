@@ -7,6 +7,12 @@ class Etiqueta(models.Model):
     def __str__(self):
         return self.nombre
 
+class Prioridad(models.Model):
+    nombre = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nombre
+
 
 class Tarea(models.Model):
     STATUS_CHOICES = (
@@ -22,6 +28,7 @@ class Tarea(models.Model):
     etiqueta = models.ForeignKey(Etiqueta, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     observaciones = models.TextField(blank=True, null=True, max_length=200)
+    prioridad = models.ForeignKey(Prioridad, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.titulo
@@ -31,3 +38,5 @@ class Tarea(models.Model):
             if choice[0] == self.estado:
                 return choice[1]
         return self.estado.lower()
+
+

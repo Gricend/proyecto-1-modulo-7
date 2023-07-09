@@ -1,0 +1,21 @@
+{% load static %}
+<div class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <h1><img src="{% static 'img/up(7).png' %}" alt="..."></h1>
+            <div class="columns is-multiline">
+                {% for tarea in tareas_completadas %}
+                <div class="column">
+                    <div class="card text">
+                        <ul>
+                            <li>Título: {{ tarea.titulo }}</li>
+                            <li>Fecha Límite: {{ tarea.fecha_limite }}</li>
+                            <li>Prioridad: {{ tarea.prioridad }}</li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>            
+        </div>
+    </div>        
+</div>

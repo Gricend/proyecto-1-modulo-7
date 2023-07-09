@@ -11,10 +11,11 @@
                 <div class=" is-4 ">
                     <div class="card text">
                         <h1>{{ tarea.titulo }}</h1>
-                        <p>Descripción: {{ tarea.descripcion }}</p>
                         <p>Fecha de Vencimiento: {{ tarea.fecha_limite }}</p>
                         <p>Estado: {{ tarea.estado }}</p>
                         <p>Etiqueta: {{ tarea.etiqueta }}</p>
+                        <p>Descripción: {{ tarea.descripcion }}</p>
+                        <p>Priodidad: {{ tarea.prioridad }}</p>
                         <form method="post">
                             {% csrf_token %}
                             {{ form.as_p }} 
